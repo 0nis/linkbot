@@ -16,10 +16,10 @@ const command: Command = {
       option.setName("user").setDescription("The user to DM").setRequired(true),
     )
     .addStringOption((option) =>
-      option
-        .setName("message")
-        .setDescription("The message to send")
-        .setRequired(true),
+      option.setName("message").setDescription("The message to send"),
+    )
+    .addAttachmentOption((option) =>
+      option.setName("file").setDescription("Optional file to include."),
     ),
 
   async execute(interaction: ChatInputCommandInteraction) {
@@ -35,11 +35,20 @@ const command: Command = {
 
     const guild = interaction.guild!;
     const user = interaction.options.getUser("user", true);
-    const message = interaction.options.getString("message", true);
+    const message = interaction.options.getString("message");
+    const attachment = interaction.options.getAttachment("file");
+
+    if (!message && !attachment) {
+      await interaction.editReply({
+        content: "You need to provide either a message or a file.",
+      });
+      return;
+    }
 
     interaction.client.emit("commandExecuted", interaction, "dm", {
       user: user.username,
       message,
+      attachment: attachment?.url,
     });
 
     const embed = new EmbedBuilder()
@@ -55,11 +64,13 @@ const command: Command = {
 
     await user.send({
       embeds: [embed],
+      files: attachment ? [attachment.url] : [],
     });
 
     await interaction.editReply({
       content: `Sent DM to ${user.displayName} (${user.username}):`,
       embeds: [embed],
+      files: attachment ? [attachment.url] : [],
     });
   },
 };

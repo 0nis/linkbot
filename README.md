@@ -169,10 +169,11 @@ Send a DM to a user as the server staff team.
 
 **Arguments:**
 
-| Argument  | Required | Description         |
-| --------- | -------- | ------------------- |
-| `user`    | Yes      | The user to DM      |
-| `message` | Yes      | The message to send |
+| Argument  | Required | Description            |
+| --------- | -------- | ---------------------- |
+| `user`    | Yes      | The user to DM         |
+| `message` | No       | The message to send    |
+| `file`    | No       | An optional attachment |
 
 ---
 

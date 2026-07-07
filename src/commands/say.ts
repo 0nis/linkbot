@@ -44,18 +44,18 @@ const command: Command = {
     const message = interaction.options.getString("message");
     const attachment = interaction.options.getAttachment("file");
 
-    interaction.client.emit("commandExecuted", interaction, "say", {
-      channel: `<#${channel?.id}>`,
-      message,
-      attachment,
-    });
-
     if (!message && !attachment) {
       await interaction.editReply({
         content: "You need to provide either a message or a file.",
       });
       return;
     }
+
+    interaction.client.emit("commandExecuted", interaction, "say", {
+      channel: `<#${channel?.id}>`,
+      message,
+      attachment: attachment?.url,
+    });
 
     if (!(channel instanceof TextChannel)) {
       await interaction.editReply({
