@@ -35,6 +35,7 @@ It is designed primarily for **private/community server use**, not as a large-sc
       - [Deploy slash commands](#deploy-slash-commands)
       - [Start the bot](#start-the-bot)
     - [Create a Discord application](#create-a-discord-application)
+  - [Disclaimer](#disclaimer)
 
 ## Features
 
@@ -332,3 +333,9 @@ npm run start
    - Use Slash Commands
    - View Channels
 10. Copy the Discord-provided **Install Link** and add the bot to your server.
+
+---
+
+## Disclaimer
+
+This project was built in less than a day during a very intense hyperfocus session. Code quality and architecture choices may reflect that.
