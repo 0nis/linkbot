@@ -1,0 +1,26 @@
+{
+  "name": "linkbot",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "start": "node dist/index.js",
+    "build": "tsc",
+    "deploy": "tsx src/deploy-commands.ts"
+  },
+  "author": "0nis",
+  "license": "GPL-3.0-only",
+  "description": "A small Discord bot focused on connecting channels together and providing simple staff communication tools.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/0nis/linkbot"
+  },
+  "dependencies": {
+    "discord.js": "^14.26.4",
+    "dotenv": "^17.4.2"
+  },
+  "devDependencies": {
+    "tsx": "^4.23.0",
+    "typescript": "^6.0.3"
+  }
+}
